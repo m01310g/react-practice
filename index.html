@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <div id="root"></div>
+    </body>
+    <script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js"></script>
+    <!-- React-Dom은 모든 React elements를 HTML body에 들 수 있도록 함 -->
+    <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js"></script>
+    <script>
+        const root = document.getElementById("root");
+        // ReactJS로 element 생성
+        const h3 = React.createElement(
+        "h3", 
+        { onMouseEnter: () => console.log("mouse entered"), }, 
+        "Hello I'm a h3"
+        );
+        const btn = React.createElement(
+            "button",
+            { onClick: () => console.log("i'm clicked"), }, 
+            "Click me"
+        );
+        const container = React.createElement("div", null, [h3, btn]);
+        // 위의 React elemt를 가지고 HTML을 만들어 배치
+        ReactDOM.render(container, root);
+    </script>
+</html>
