@@ -16,8 +16,8 @@
             const [counter, setCounter] = React.useState(0);
 
             const onClick = () => {
-                // modifier은 자동으로 data 값 및 UI 업데이트
-                setCounter(counter + 1);
+                // 아래 함수가 더 안전한 방법(current 값을 가지고 다음 값을 계산)
+                setCounter((current) => current + 1);
             };
             
             return (
