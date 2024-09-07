@@ -10,26 +10,24 @@
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <script type="text/babel">
         const root = document.getElementById("root");
-        let counter = 0;
 
-        function countUp() {
-            counter += 1;
-            render();
-        }
+        function App() {
+            // useState는 배열을 제공 => 담으려는 data 값, data 값을 바꿀 때 사용할 modifier
+            const [counter, setCounter] = React.useState(0);
 
-        // UI를 업데이트 하려면 render을 다시 해야 함
-        function render() {
-            ReactDOM.render(<App/>, root);
-        }
-
-        const App = () => (
+            const onClick = () => {
+                // modifier은 자동으로 data 값 및 UI 업데이트
+                setCounter(counter + 1);
+            };
+            
+            return (
             <div>
                 <h3>Total Clicks: {counter}</h3>
-                <button onClick = {countUp}>Click me</button>
+               <button onClick={onClick}>Click me</button>
             </div>
-        );
+            );
+        }
 
-        // 위의 React elemt를 가지고 HTML을 만들어 배치
-        render();
+        ReactDOM.render(<App/>, root);
     </script>
 </html>
