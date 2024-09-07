@@ -10,28 +10,26 @@
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <script type="text/babel">
         const root = document.getElementById("root");
+        let counter = 0;
 
-        // JSX 이용해서 element 생성
-        const Title = () => (
-            <h3 id='title' onMouseEnter = { () => console.log("mouse entered") }>
-            Hello I'm a title
-            </h3>
+        function countUp() {
+            counter += 1;
+            render();
+        }
+
+        // UI를 업데이트 하려면 render을 다시 해야 함
+        function render() {
+            ReactDOM.render(<App/>, root);
+        }
+
+        const App = () => (
+            <div>
+                <h3>Total Clicks: {counter}</h3>
+                <button onClick = {countUp}>Click me</button>
+            </div>
         );
-
-        const Button = () => (
-            <button onClick = { () => console.log("i'm clicked") }>
-            Click me
-            </button>
-        );
-
-        //위의 Title과 Button을 함수로 만들어줘야 함(여기에서는 arrow fucntion 사용)
-        const Container = () => (
-            <div> 
-                <Title/> 
-                <Button/> 
-            </div>);
 
         // 위의 React elemt를 가지고 HTML을 만들어 배치
-        ReactDOM.render(<Container/>, root);
+        render();
     </script>
 </html>
